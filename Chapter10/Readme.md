@@ -88,8 +88,10 @@ metadata:
   name: initdb
 ```
 
-In both cases, the values are encoded in base64 format. They aren't encryptedas we can verify:
+In both cases, the values are encoded in base64 format. They aren't encrypted as we can verify:
 ```
+$ kubectl apply -f dbcredentials.secret.yaml
+
 $ kubectl get secret dbcredentials -ojsonpath="{.data.POSTGRES_PASSWORD}"|base64 -d
 changeme
 ```
